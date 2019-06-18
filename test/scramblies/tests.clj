@@ -16,11 +16,10 @@
     (is (sc/scramble? "rekqodlw" "world"))
     (is (false? (sc/scramble? "katas" "steak"))))
 
-  (testing "duplicate letters in world"
-    (is (false? (sc/scramble? "helo" "hello"))))
-  
-  #_(testing "foo"
-      (is (false? (sc/scramble? "heloa" "hello"))))
+  (testing "duplicate letters"
+    (is (sc/scramble? "hello" "hello"))
+    (is (false? (sc/scramble? "helo" "hello")))
+    )
   )
 
 

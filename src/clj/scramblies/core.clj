@@ -16,7 +16,7 @@
       str/trim))
 
 (defn min-frequencies-met?
-  "returns true of frequencies of str1 is greater than or equal to frequencies of str2"
+  "returns true if frequencies of str1 is greater than or equal to frequencies of str2"
   [str1 str2]
   (let [freq-a (frequencies str1)
         freq-b (frequencies str2)]

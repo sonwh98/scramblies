@@ -3,12 +3,16 @@
             [scramblies.core :as sc]))
 
 (deftest normalize
-  (is (= "a" (sc/normalize "A")))
-  )
+  (testing "lower case letters only"
+    (is (= "a" (sc/normalize "A"))))
 
-(deftest min-frequencies-met?
-  (is (sc/min-frequencies-met? "helllo" "hello"))
-  )
+  (testing "no punctuations"
+    (is (clojure.string/blank? (sc/normalize "[?.,#!$%^&*;:{}=-_`~()]"))))
+
+  (testing "no digits"
+    (is (clojure.string/blank? (sc/normalize "1234567890")))
+    (sc/normalize "1234567890 a b c") "a b c"
+    (is (= (sc/normalize "1234567890 a b c") "a b c"))))
 
 (deftest scramble
   (testing "given cases"

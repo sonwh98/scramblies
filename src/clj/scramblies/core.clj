@@ -2,10 +2,18 @@
   (:require [clojure.string :as str]
             [clojure.set :as set]))
 
+(defn remove-punctuation [s]
+  (str/replace s #"[\?.,\/#!$%\^&\*;:{}=\-_`~()\[\]]" ""))
+
+(defn remove-digits [s]
+  (str/replace s #"[0-9]" ""))
+
 (defn normalize [a-str]
   (-> a-str
       str/lower-case
-      ))
+      remove-punctuation
+      remove-digits
+      str/trim))
 
 (defn min-frequencies-met?
   "returns true of frequencies of str1 is greater than or equal to frequencies of str2"
@@ -20,7 +28,9 @@
                 -1)))))
 
 (defn scramble? [str1 str2]
-  (min-frequencies-met? str1 str2))
+  (let [str1 (normalize str1)
+        str2 (normalize str2)]
+    (min-frequencies-met? str1 str2)))
 
 (comment
   (scramble? "cedewaraaossoqqyt" "codewars")
@@ -53,4 +63,7 @@
   (min-frequencies-met? "hella" "hello")
   
   (> 0 -1)
+  (str/replace "ab...///12?3" #"[.,\/#!$%\^&\*;:{}=\-_`~()]" "")
+
+  (remove-digits "abc 123foobar")
   )

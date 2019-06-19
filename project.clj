@@ -6,6 +6,7 @@
                  [compojure "1.6.1"]
                  [reagent "0.8.1"]
                  [binaryage/devtools "0.9.10"]
+                 [org.clojure/core.async "0.4.490"]                 
                  ]
 
   :plugins [[lein-figwheel "0.5.18"]

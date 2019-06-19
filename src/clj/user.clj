@@ -5,10 +5,10 @@
 
 (defn start []
   (s/start)
-  #_(f/start-figwheel!))
+  (f/start-figwheel!))
 
 (defn stop []
-  #_(f/stop-figwheel!)
+  (f/stop-figwheel!)
   (s/stop))
 
 (defn cljs []

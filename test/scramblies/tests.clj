@@ -22,7 +22,11 @@
 
   (testing "duplicate letters"
     (is (s/scramble? "hello" "hello"))
-    (is (false? (s/scramble? "helo" "hello")))))
+    (is (false? (s/scramble? "helo" "hello"))))
+
+  (testing "single letter"
+    (is (false? (s/scramble? "h" "a"))))
+  )
 
 (comment
   (clojure.test/run-tests 'scramblies.tests)

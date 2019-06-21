@@ -11,7 +11,6 @@
 
   (testing "no digits"
     (is (clojure.string/blank? (s/normalize "1234567890")))
-    (s/normalize "1234567890 a b c") "a b c"
     (is (= (s/normalize "1234567890 a b c") "a b c"))))
 
 (deftest scramble
@@ -25,8 +24,7 @@
     (is (false? (s/scramble? "helo" "hello"))))
 
   (testing "single letter"
-    (is (false? (s/scramble? "h" "a"))))
-  )
+    (is (false? (s/scramble? "h" "a")))))
 
 (comment
   (clojure.test/run-tests 'scramblies.tests)
